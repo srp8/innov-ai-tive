@@ -28,52 +28,54 @@ export default function Navbar() {
       isScrolled ? 'glassmorphism shadow-md' : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          {/* Logo */}
-          <div className="flex-shrink-0 flex items-center">
-            <Link to="/" className={`font-bold text-xl md:text-2xl font-poppins transition-all hover:animate-glitch ${
-              isScrolled ? 'text-neon-blue neon-text' : 'text-white'
-            }`}>
-              InnovAItive
-            </Link>
-          </div>
-          
-          {/* Desktop menu */}
-          <div className="hidden md:flex items-center space-x-4">
-            <Link to="/" className="px-3 py-2 text-sm font-medium text-white hover:text-neon-blue transition-colors">
-              Home
-            </Link>
-            <Link to="/about" className="px-3 py-2 text-sm font-medium text-gray-300 hover:text-neon-purple transition-colors">
-              About
-            </Link>
-            
-            {isAuthenticated ? (
-              <Link to="/portal">
-                <Button className="bg-neon-blue text-charcoal hover:bg-neon-purple glow-on-hover rounded-full">
-                  Portal
-                </Button>
+        <div className="flex justify-center h-16">
+          <div className="flex items-center justify-between w-full max-w-5xl">
+            {/* Logo */}
+            <div className="flex-shrink-0 flex items-center">
+              <Link to="/" className={`font-bold text-xl md:text-2xl font-poppins transition-all hover:animate-glitch ${
+                isScrolled ? 'text-neon-blue neon-text' : 'text-white'
+              }`}>
+                InnovAItive
               </Link>
-            ) : (
-              <Button 
-                className="bg-neon-blue text-charcoal hover:bg-neon-purple glow-on-hover rounded-full"
-                onClick={() => {
-                  // This would be connected to Clerk authentication later
-                  console.log('Login/Signup clicked');
-                }}
+            </div>
+            
+            {/* Desktop menu */}
+            <div className="hidden md:flex items-center space-x-8">
+              <Link to="/" className="px-3 py-2 text-sm font-medium text-white hover:text-neon-blue transition-colors">
+                Home
+              </Link>
+              <Link to="/about" className="px-3 py-2 text-sm font-medium text-gray-300 hover:text-neon-blue transition-colors">
+                About
+              </Link>
+              
+              {isAuthenticated ? (
+                <Link to="/portal">
+                  <Button className="border-2 border-neon-blue text-white hover:text-neon-blue glow-on-hover rounded-full px-6">
+                    Portal
+                  </Button>
+                </Link>
+              ) : (
+                <Button 
+                  className="border-2 border-neon-blue text-white hover:text-neon-blue glow-on-hover rounded-full px-6"
+                  onClick={() => {
+                    // This would be connected to Clerk authentication later
+                    console.log('Login/Signup clicked');
+                  }}
+                >
+                  Login / Signup
+                </Button>
+              )}
+            </div>
+            
+            {/* Mobile menu button */}
+            <div className="md:hidden flex items-center">
+              <button
+                onClick={toggleMenu}
+                className="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-neon-blue focus:outline-none transition-colors"
               >
-                Login / Signup
-              </Button>
-            )}
-          </div>
-          
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
-            <button
-              onClick={toggleMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-neon-blue focus:outline-none transition-colors"
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -91,7 +93,7 @@ export default function Navbar() {
             </Link>
             <Link 
               to="/about" 
-              className="block px-3 py-2 text-base font-medium text-gray-300 hover:text-neon-purple transition-colors"
+              className="block px-3 py-2 text-base font-medium text-gray-300 hover:text-neon-blue transition-colors"
               onClick={toggleMenu}
             >
               About
@@ -103,14 +105,14 @@ export default function Navbar() {
                 className="block px-3 py-2" 
                 onClick={toggleMenu}
               >
-                <Button className="w-full bg-neon-blue text-charcoal hover:bg-neon-purple rounded-full">
+                <Button className="w-full border-2 border-neon-blue text-white hover:text-neon-blue rounded-full">
                   Portal
                 </Button>
               </Link>
             ) : (
               <div className="px-3 py-2">
                 <Button 
-                  className="w-full bg-neon-blue text-charcoal hover:bg-neon-purple rounded-full glow-on-hover"
+                  className="w-full border-2 border-neon-blue text-white hover:text-neon-blue rounded-full glow-on-hover"
                   onClick={() => {
                     console.log('Login/Signup clicked');
                     setIsMenuOpen(false);

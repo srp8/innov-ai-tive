@@ -4,8 +4,8 @@ import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Features from '@/components/Features';
 import HowItWorks from '@/components/HowItWorks';
-import Testimonials from '@/components/Testimonials';
 import Footer from '@/components/Footer';
+import SpaceBackground from '@/components/SpaceBackground';
 
 export default function Index() {
   // Apply dark background to body
@@ -18,12 +18,12 @@ export default function Index() {
   }, []);
   
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col relative overflow-hidden">
+      <SpaceBackground />
       <Navbar />
       <Hero />
       <Features />
       <HowItWorks />
-      <Testimonials />
       <Footer />
     </div>
   );

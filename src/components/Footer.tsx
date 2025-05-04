@@ -27,7 +27,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-charcoal-dark text-white py-12 border-t border-charcoal-light/30">
+    <footer className="relative z-10 bg-charcoal-dark/70 text-white py-12 border-t border-charcoal-light/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Logo and Description */}
@@ -83,7 +83,7 @@ export default function Footer() {
               />
               <Button 
                 type="submit" 
-                className="w-full bg-neon-blue text-charcoal hover:bg-neon-purple glow-on-hover rounded-full"
+                className="w-full border-2 border-neon-blue text-white hover:text-neon-blue glow-on-hover rounded-full"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? 'Subscribing...' : 'Subscribe'}
@@ -95,11 +95,10 @@ export default function Footer() {
           </div>
         </div>
         
-        {/* Social and Copyright */}
+        {/* Copyright */}
         <div className="mt-12 pt-8 border-t border-charcoal-light/30 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm">
             &copy; 2025 InnovAItive. All rights reserved.
-            <span className="ml-2 text-neon-purple text-xs hover:animate-glitch inline-block">Powered by xAI</span>
           </p>
           
           <div className="flex space-x-4 mt-4 md:mt-0">
