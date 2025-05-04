@@ -1,113 +1,106 @@
 
-import { useState } from 'react';
-import { useToast } from '@/hooks/use-toast';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
+import { useToast } from '@/hooks/use-toast';
+import { useState, useEffect } from 'react';
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [name, setName] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+  
+  // Apply dark background to body
+  useEffect(() => {
+    document.body.classList.add('bg-charcoal');
+    
+    return () => {
+      document.body.classList.remove('bg-charcoal');
+    };
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
+    // Simulate submission to Supabase
     setTimeout(() => {
       toast({
         title: "Message sent!",
-        description: "We'll get back to you as soon as possible.",
+        description: "Thank you for contacting us. We'll respond shortly.",
       });
-      setFormData({ name: '', email: '', message: '' });
+      setEmail('');
+      setMessage('');
+      setName('');
       setIsSubmitting(false);
-    }, 1500);
+    }, 1000);
   };
 
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-grow pt-16">
-        <section className="py-16">
+        <section className="py-20 bg-gradient-to-br from-charcoal to-charcoal-dark">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-3xl font-bold mb-8 text-center font-inter">Contact Us</h1>
+            <h1 className="text-3xl font-bold text-center mb-8 font-poppins">
+              <span className="text-neon-blue neon-text">Contact</span> Us
+            </h1>
             
-            <div className="bg-white rounded-lg shadow-md p-8">
-              <p className="text-gray-700 mb-6 text-center">
-                Have questions, feedback, or need assistance? Reach out to our team!
+            <div className="glassmorphism rounded-lg p-8">
+              <p className="text-gray-300 text-center mb-8">
+                Have questions about InnovAItive? We'd love to hear from you. Fill out the form below and we'll get back to you shortly.
               </p>
               
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="name" className="block text-neon-blue mb-2 font-medium">
                     Name
                   </label>
                   <Input
                     id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
+                    type="text"
+                    className="bg-charcoal border-charcoal-light text-white placeholder:text-gray-400 focus:border-neon-blue"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     required
                   />
                 </div>
                 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="email" className="block text-neon-blue mb-2 font-medium">
                     Email
                   </label>
                   <Input
                     id="email"
-                    name="email"
                     type="email"
-                    value={formData.email}
-                    onChange={handleChange}
+                    className="bg-charcoal border-charcoal-light text-white placeholder:text-gray-400 focus:border-neon-blue"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     required
                   />
                 </div>
                 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="message" className="block text-neon-blue mb-2 font-medium">
                     Message
                   </label>
-                  <Textarea
+                  <textarea
                     id="message"
-                    name="message"
-                    rows={6}
-                    value={formData.message}
-                    onChange={handleChange}
+                    rows={5}
+                    className="w-full rounded-md bg-charcoal border-charcoal-light text-white placeholder:text-gray-400 focus:border-neon-blue px-3 py-2 focus:outline-none focus:ring-2 focus:ring-neon-blue"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
                     required
-                  />
+                  ></textarea>
                 </div>
                 
-                <div className="flex items-center">
-                  <input
-                    id="consent"
-                    name="consent"
-                    type="checkbox"
-                    className="h-4 w-4 text-primary-DEFAULT focus:ring-primary-DEFAULT border-gray-300 rounded"
-                    required
-                  />
-                  <label htmlFor="consent" className="ml-2 block text-sm text-gray-700">
-                    I consent to having my data processed according to the Privacy Policy
-                  </label>
-                </div>
-                
-                <div className="mt-6">
+                <div className="flex justify-center">
                   <Button 
-                    type="submit" 
-                    className="w-full bg-primary-DEFAULT hover:bg-primary-DEFAULT/90"
+                    type="submit"
+                    className="bg-neon-blue text-charcoal hover:bg-neon-purple glow-on-hover rounded-full px-8"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? 'Sending...' : 'Send Message'}
@@ -115,10 +108,9 @@ export default function Contact() {
                 </div>
               </form>
               
-              <div className="mt-8 pt-6 border-t border-gray-200">
-                <h2 className="text-lg font-semibold mb-4">Other Ways to Reach Us</h2>
-                <p className="mb-2"><strong>Email:</strong> contact@innovaitive.example.com</p>
-                <p className="mb-2"><strong>Address:</strong> 123 Innovation Street, Tech City, CA 94000</p>
+              <div className="mt-12 pt-8 border-t border-charcoal-light text-center">
+                <p className="text-neon-purple mb-2">Alternative Contact Methods</p>
+                <p className="text-gray-300">Email: <a href="mailto:info@innovaitive.example.com" className="text-neon-blue hover:text-neon-purple">info@innovaitive.example.com</a></p>
               </div>
             </div>
           </div>

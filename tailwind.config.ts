@@ -21,6 +21,7 @@ export default {
 		extend: {
 			fontFamily: {
 				inter: ['Inter', 'sans-serif'],
+				poppins: ['Poppins', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -30,9 +31,9 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					light: '#60A5FA',
-					DEFAULT: '#1E40AF',
-					dark: '#1E3A8A',
+					light: '#00D4FF',
+					DEFAULT: '#00A6FF',
+					dark: '#0076B3',
 					foreground: 'hsl(var(--primary-foreground))'
 				},
 				secondary: {
@@ -58,6 +59,16 @@ export default {
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
+				},
+				// New sci-fi theme colors
+				charcoal: {
+					DEFAULT: '#1A1A1A',
+					light: '#2D2D2D',
+					dark: '#141414',
+				},
+				neon: {
+					blue: '#00D4FF',
+					purple: '#7C3AED',
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
@@ -100,12 +111,31 @@ export default {
 					from: { opacity: '0', transform: 'translateX(-10px)' },
 					to: { opacity: '1', transform: 'translateX(0)' }
 				},
+				glitch: {
+					'0%, 100%': { opacity: '1', transform: 'translateX(0)' },
+					'10%': { opacity: '0.9', transform: 'translateX(-2px)' },
+					'20%': { opacity: '0.8', transform: 'translateX(2px)' },
+					'30%': { opacity: '1', transform: 'translateX(0)' },
+					'40%': { opacity: '0.9', transform: 'translateX(1px)' },
+					'50%': { opacity: '1', transform: 'translateX(-1px)' },
+				},
+				pulse: {
+					'0%, 100%': { transform: 'scale(1)' },
+					'50%': { transform: 'scale(1.05)' },
+				},
+				glow: {
+					'0%, 100%': { boxShadow: '0 0 5px rgba(0, 212, 255, 0.5)' },
+					'50%': { boxShadow: '0 0 20px rgba(0, 212, 255, 0.8)' },
+				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fadeIn 0.5s ease-out forwards',
 				'slide-in': 'slideIn 0.5s ease-out forwards',
+				'glitch': 'glitch 1s ease-in-out infinite',
+				'pulse': 'pulse 2s infinite',
+				'glow': 'glow 1.5s infinite',
 			}
 		}
 	},

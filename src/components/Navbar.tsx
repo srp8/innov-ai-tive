@@ -1,47 +1,61 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   // Placeholder for authentication state
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   // Toggle for mobile menu
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
+  // Check if page is scrolled to add background
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <nav className="fixed top-0 left-0 w-full bg-white shadow-sm z-50">
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+      isScrolled ? 'glassmorphism shadow-md' : 'bg-transparent'
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
-            <Link to="/" className="text-primary-DEFAULT font-bold text-xl md:text-2xl font-inter">
+            <Link to="/" className={`font-bold text-xl md:text-2xl font-poppins transition-all hover:animate-glitch ${
+              isScrolled ? 'text-neon-blue neon-text' : 'text-white'
+            }`}>
               InnovAItive
             </Link>
           </div>
           
           {/* Desktop menu */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link to="/" className="px-3 py-2 text-sm font-medium text-gray-900 hover:text-primary-DEFAULT">
+            <Link to="/" className="px-3 py-2 text-sm font-medium text-white hover:text-neon-blue transition-colors">
               Home
             </Link>
-            <Link to="/about" className="px-3 py-2 text-sm font-medium text-gray-600 hover:text-primary-DEFAULT">
+            <Link to="/about" className="px-3 py-2 text-sm font-medium text-gray-300 hover:text-neon-purple transition-colors">
               About
             </Link>
             
             {isAuthenticated ? (
               <Link to="/portal">
-                <Button variant="default" className="bg-primary-DEFAULT hover:bg-primary-DEFAULT/90">
+                <Button className="bg-neon-blue text-charcoal hover:bg-neon-purple glow-on-hover rounded-full">
                   Portal
                 </Button>
               </Link>
             ) : (
               <Button 
-                variant="default" 
-                className="bg-primary-DEFAULT hover:bg-primary-DEFAULT/90"
+                className="bg-neon-blue text-charcoal hover:bg-neon-purple glow-on-hover rounded-full"
                 onClick={() => {
                   // This would be connected to Clerk authentication later
                   console.log('Login/Signup clicked');
@@ -56,7 +70,7 @@ export default function Navbar() {
           <div className="md:hidden flex items-center">
             <button
               onClick={toggleMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary-DEFAULT focus:outline-none"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-neon-blue focus:outline-none transition-colors"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -66,18 +80,18 @@ export default function Navbar() {
       
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white shadow-lg animate-fade-in">
+        <div className="md:hidden glassmorphism shadow-lg animate-fade-in">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <Link 
               to="/" 
-              className="block px-3 py-2 text-base font-medium text-gray-900 hover:text-primary-DEFAULT"
+              className="block px-3 py-2 text-base font-medium text-white hover:text-neon-blue transition-colors"
               onClick={toggleMenu}
             >
               Home
             </Link>
             <Link 
               to="/about" 
-              className="block px-3 py-2 text-base font-medium text-gray-600 hover:text-primary-DEFAULT"
+              className="block px-3 py-2 text-base font-medium text-gray-300 hover:text-neon-purple transition-colors"
               onClick={toggleMenu}
             >
               About
@@ -89,14 +103,14 @@ export default function Navbar() {
                 className="block px-3 py-2" 
                 onClick={toggleMenu}
               >
-                <Button className="w-full bg-primary-DEFAULT hover:bg-primary-DEFAULT/90">
+                <Button className="w-full bg-neon-blue text-charcoal hover:bg-neon-purple rounded-full">
                   Portal
                 </Button>
               </Link>
             ) : (
               <div className="px-3 py-2">
                 <Button 
-                  className="w-full bg-primary-DEFAULT hover:bg-primary-DEFAULT/90"
+                  className="w-full bg-neon-blue text-charcoal hover:bg-neon-purple rounded-full glow-on-hover"
                   onClick={() => {
                     console.log('Login/Signup clicked');
                     setIsMenuOpen(false);
