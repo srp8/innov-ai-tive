@@ -1,8 +1,23 @@
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function SpaceBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const maxGridOpacity = 0.05; // Maximum opacity for grid lines
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Calculate scroll position as percentage (0 to 1) within the first 300px of scrolling
+      const position = Math.min(window.scrollY / 300, 1);
+      setScrollPosition(position);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -37,7 +52,10 @@ export default function SpaceBackground() {
 
     // Draw grid
     const drawGrid = () => {
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+      // Calculate grid opacity based on scroll position
+      const gridOpacity = scrollPosition * maxGridOpacity;
+      
+      ctx.strokeStyle = `rgba(255, 255, 255, ${gridOpacity})`;
       ctx.lineWidth = 1;
       
       // Draw vertical lines
@@ -62,7 +80,7 @@ export default function SpaceBackground() {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      // Draw grid
+      // Draw grid with scroll-based opacity
       drawGrid();
       
       // Draw and update stars
@@ -90,7 +108,7 @@ export default function SpaceBackground() {
     return () => {
       window.removeEventListener('resize', resizeCanvas);
     };
-  }, []);
+  }, [scrollPosition]);
 
   return (
     <>

@@ -97,3 +97,45 @@
 .glassmorphism {
   @apply bg-charcoal/80 backdrop-blur-md border border-charcoal-light/20;
 }
+
+/* Typewriter effect */
+.typewriter-container {
+  display: inline-block;
+}
+
+.cursor {
+  display: inline-block;
+  animation: cursor-blink 1s infinite;
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Navbar transitions */
+.navbar-initial {
+  @apply py-4 transition-all duration-500;
+}
+
+.navbar-scrolled {
+  @apply py-2 transition-all duration-500;
+}
+
+.navbar-curved {
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  @apply bg-charcoal-dark/90 backdrop-blur-lg;
+}
+
+.navbar-item {
+  @apply transition-all duration-500;
+}
+
+.navbar-logo {
+  @apply transition-transform duration-500;
+}
+
+.navbar-actions {
+  @apply transition-transform duration-500;
+}
