@@ -2,7 +2,7 @@
 import React, { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
-import { PointMaterial, Points } from '@react-three/drei';
+import { Points } from '@react-three/drei';
 
 interface OrbitParticlesProps {
   color: string;
@@ -41,19 +41,21 @@ export const OrbitParticles = ({ color, count, active }: OrbitParticlesProps) =>
     <>
       <ambientLight intensity={0.5} />
       <Points limit={count} ref={pointsRef}>
-        <PointMaterial 
+        <pointsMaterial 
           transparent
           color={color}
           size={0.15}
           sizeAttenuation={true}
           depthWrite={false}
         />
-        <bufferAttribute 
-          attach="geometry.attributes.position"
-          count={count}
-          array={particles}
-          itemSize={3}
-        />
+        <bufferGeometry>
+          <bufferAttribute
+            attach="attributes-position"
+            count={particles.length / 3}
+            array={particles}
+            itemSize={3}
+          />
+        </bufferGeometry>
       </Points>
     </>
   );
