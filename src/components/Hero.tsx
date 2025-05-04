@@ -10,7 +10,7 @@ export default function Hero() {
   const [displayText, setDisplayText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
   
-  const typewriterTexts = ["Exams", "Study Sessions", "Note Taking"];
+  const typewriterTexts = ["Lectures", "Exams", "Study Sessions", "Note Taking"];
   const typewriterSpeed = 100; // milliseconds per character
   const typewriterDelayBetweenWords = 2000; // milliseconds between words
   
@@ -61,12 +61,12 @@ export default function Hero() {
             style={{animationDelay: '0.2s'}}
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins leading-tight">
-              <span className="text-neon-blue neon-text">AI to Crush Your Lectures</span>
+              <span className="text-neon-blue neon-text">AI to Crush Your</span>
               <br />
-              <span className="typewriter-container">(<span className="typewriter">{displayText}</span><span className="cursor">|</span>)</span>
+              <span className="typewriter-container"><span className="typewriter">{displayText}</span><span className="cursor">|</span></span>
             </h1>
             <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
-              Instantly transcribe, align, and simplify lectures into study guides that click—approved by your professor.
+              InnovAItive records your lectures, transcribes them, syncs the transcripts with the slides, turning your professor's words into fifth-grader-crystal clear explanations and advanced summaries for every slide—instantly.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4 pt-8">
               <div className="relative">
