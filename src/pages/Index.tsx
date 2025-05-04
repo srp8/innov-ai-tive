@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import { StudentCarousel } from '@/components/carousel/StudentCarousel';
 import { ProfessorCarousel } from '@/components/carousel/ProfessorCarousel';
+import Features from '@/components/Features';
 import HowItWorks from '@/components/HowItWorks';
 import Footer from '@/components/Footer';
 import SpaceBackground from '@/components/SpaceBackground';
@@ -25,6 +26,7 @@ export default function Index() {
       <Hero />
       <StudentCarousel />
       <ProfessorCarousel />
+      <Features />
       <HowItWorks />
       <Footer />
     </div>
