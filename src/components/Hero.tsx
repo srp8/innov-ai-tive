@@ -1,6 +1,6 @@
 
 import { Button } from '@/components/ui/button';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Hero() {
@@ -37,7 +37,7 @@ export default function Hero() {
               <div className="relative">
                 <Button 
                   size="lg"
-                  className="border-2 border-neon-blue text-white hover:text-neon-blue glow-on-hover rounded-full px-8 py-6"
+                  className="bg-transparent border-2 border-neon-blue text-white hover:text-neon-blue glow-on-hover rounded-full px-8 py-6"
                   onClick={() => console.log('Student signup')}
                   onMouseEnter={() => setActiveTooltip('lectures')}
                   onMouseLeave={() => setActiveTooltip(null)}
@@ -54,7 +54,7 @@ export default function Hero() {
               <div className="relative">
                 <Button 
                   size="lg"
-                  className="border-2 border-neon-blue text-white hover:text-neon-blue glow-on-hover rounded-full px-8 py-6"
+                  className="bg-transparent border-2 border-neon-blue text-white hover:text-neon-blue glow-on-hover rounded-full px-8 py-6"
                   onClick={() => console.log('Professor signup')}
                   onMouseEnter={() => setActiveTooltip('class')}
                   onMouseLeave={() => setActiveTooltip(null)}
@@ -72,7 +72,7 @@ export default function Hero() {
                 <Link to="/about">
                   <Button 
                     size="lg"
-                    className="border-2 border-neon-blue text-white hover:text-neon-blue glow-on-hover rounded-full px-8 py-6"
+                    className="bg-transparent border-2 border-neon-blue text-white hover:text-neon-blue glow-on-hover rounded-full px-8 py-6"
                     onMouseEnter={() => setActiveTooltip('institution')}
                     onMouseLeave={() => setActiveTooltip(null)}
                   >

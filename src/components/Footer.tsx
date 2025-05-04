@@ -83,7 +83,7 @@ export default function Footer() {
               />
               <Button 
                 type="submit" 
-                className="w-full border-2 border-neon-blue text-white hover:text-neon-blue glow-on-hover rounded-full"
+                className="w-full bg-transparent border-2 border-neon-blue text-white hover:text-neon-blue glow-on-hover rounded-full"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? 'Subscribing...' : 'Subscribe'}

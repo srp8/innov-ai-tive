@@ -50,13 +50,13 @@ export default function Navbar() {
               
               {isAuthenticated ? (
                 <Link to="/portal">
-                  <Button className="border-2 border-neon-blue text-white hover:text-neon-blue glow-on-hover rounded-full px-6">
+                  <Button className="bg-transparent border-2 border-neon-blue text-white hover:text-neon-blue glow-on-hover rounded-full px-6">
                     Portal
                   </Button>
                 </Link>
               ) : (
                 <Button 
-                  className="border-2 border-neon-blue text-white hover:text-neon-blue glow-on-hover rounded-full px-6"
+                  className="bg-transparent border-2 border-neon-blue text-white hover:text-neon-blue glow-on-hover rounded-full px-6"
                   onClick={() => {
                     // This would be connected to Clerk authentication later
                     console.log('Login/Signup clicked');
@@ -105,14 +105,14 @@ export default function Navbar() {
                 className="block px-3 py-2" 
                 onClick={toggleMenu}
               >
-                <Button className="w-full border-2 border-neon-blue text-white hover:text-neon-blue rounded-full">
+                <Button className="w-full bg-transparent border-2 border-neon-blue text-white hover:text-neon-blue rounded-full">
                   Portal
                 </Button>
               </Link>
             ) : (
               <div className="px-3 py-2">
                 <Button 
-                  className="w-full border-2 border-neon-blue text-white hover:text-neon-blue rounded-full glow-on-hover"
+                  className="w-full bg-transparent border-2 border-neon-blue text-white hover:text-neon-blue rounded-full glow-on-hover"
                   onClick={() => {
                     console.log('Login/Signup clicked');
                     setIsMenuOpen(false);
