@@ -2,7 +2,8 @@
 import { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
-import Features from '@/components/Features';
+import { StudentCarousel } from '@/components/carousel/StudentCarousel';
+import { ProfessorCarousel } from '@/components/carousel/ProfessorCarousel';
 import HowItWorks from '@/components/HowItWorks';
 import Footer from '@/components/Footer';
 import SpaceBackground from '@/components/SpaceBackground';
@@ -22,7 +23,8 @@ export default function Index() {
       <SpaceBackground />
       <Navbar />
       <Hero />
-      <Features />
+      <StudentCarousel />
+      <ProfessorCarousel />
       <HowItWorks />
       <Footer />
     </div>
