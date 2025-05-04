@@ -64,6 +64,10 @@
   background: linear-gradient(135deg, #1A1A1A 0%, #2D2D2D 100%);
 }
 
+.space-gradient-bg {
+  background: linear-gradient(90deg, #2D1B69 0%, #1E6B7B 100%);
+}
+
 .neon-text {
   text-shadow: 0 0 10px rgba(0, 212, 255, 0.7);
 }
