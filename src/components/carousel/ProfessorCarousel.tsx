@@ -60,7 +60,7 @@ export const ProfessorCarousel = () => {
           </div>
           
           <div className="mt-auto">
-            <div className="text-xs text-neon-purple">Step 1/3</div>
+            {/* Step indicator removed */}
           </div>
         </div>
       </CarouselPanel>
@@ -143,7 +143,7 @@ export const ProfessorCarousel = () => {
           </div>
           
           <div className="mt-auto">
-            <div className="text-xs text-neon-purple">Step 2/3</div>
+            {/* Step indicator removed */}
           </div>
         </div>
       </CarouselPanel>

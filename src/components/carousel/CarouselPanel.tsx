@@ -43,8 +43,8 @@ export const CarouselPanel = ({
       }
     },
     hover: {
-      scale: isActive ? 1.1 : 1,
-      y: -10,
+      scale: isActive ? 1.08 : 1.02,
+      y: 0,
       transition: { type: "spring", stiffness: 300, damping: 15 }
     }
   };
