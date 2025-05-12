@@ -98,6 +98,39 @@
   @apply bg-charcoal/80 backdrop-blur-md border border-charcoal-light/20;
 }
 
+/* Text fade button styles */
+.text-fade-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.text-fade-button .default-text,
+.text-fade-button .hover-text {
+  display: block;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  white-space: nowrap;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+}
+
+.text-fade-button .default-text {
+  opacity: 1;
+}
+
+.text-fade-button .hover-text {
+  opacity: 0;
+}
+
+.text-fade-button:hover .default-text {
+  opacity: 0;
+}
+
+.text-fade-button:hover .hover-text {
+  opacity: 1;
+}
+
 /* Typewriter effect */
 .typewriter-container {
   display: inline-block;

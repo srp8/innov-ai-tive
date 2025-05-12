@@ -1,11 +1,10 @@
 
 import { Button } from '@/components/ui/button';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Hero() {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
   const [typewriterIndex, setTypewriterIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
@@ -69,57 +68,33 @@ export default function Hero() {
               InnovAItive records your lectures, transcribes them, syncs the transcripts with the slides, turning your professor's words into fifth-grader-crystal clear explanations and advanced summaries for every slide—instantly.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4 pt-8">
-              <div className="relative">
+              <Button 
+                size="lg"
+                className="bg-transparent border-2 border-neon-blue text-white hover:text-neon-blue glow-on-hover rounded-full px-8 py-6 text-fade-button"
+                onClick={() => console.log('Student signup')}
+              >
+                <span className="default-text">Empower your Lectures</span>
+                <span className="hover-text">For Students</span>
+              </Button>
+              
+              <Button 
+                size="lg"
+                className="bg-transparent border-2 border-neon-blue text-white hover:text-neon-blue glow-on-hover rounded-full px-8 py-6 text-fade-button"
+                onClick={() => console.log('Professor signup')}
+              >
+                <span className="default-text">Empower your Class</span>
+                <span className="hover-text">For Professors</span>
+              </Button>
+              
+              <Link to="/about">
                 <Button 
                   size="lg"
-                  className="bg-transparent border-2 border-neon-blue text-white hover:text-neon-blue glow-on-hover rounded-full px-8 py-6"
-                  onClick={() => console.log('Student signup')}
-                  onMouseEnter={() => setActiveTooltip('lectures')}
-                  onMouseLeave={() => setActiveTooltip(null)}
+                  className="bg-transparent border-2 border-neon-blue text-white hover:text-neon-blue glow-on-hover rounded-full px-8 py-6 text-fade-button"
                 >
-                  Empower your Lectures
+                  <span className="default-text">Empower your Institution</span>
+                  <span className="hover-text">For Universities</span>
                 </Button>
-                {activeTooltip === 'lectures' && (
-                  <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-charcoal-dark p-2 rounded text-white text-sm neon-border whitespace-nowrap">
-                    For Students
-                  </div>
-                )}
-              </div>
-              
-              <div className="relative">
-                <Button 
-                  size="lg"
-                  className="bg-transparent border-2 border-neon-blue text-white hover:text-neon-blue glow-on-hover rounded-full px-8 py-6"
-                  onClick={() => console.log('Professor signup')}
-                  onMouseEnter={() => setActiveTooltip('class')}
-                  onMouseLeave={() => setActiveTooltip(null)}
-                >
-                  Empower your Class
-                </Button>
-                {activeTooltip === 'class' && (
-                  <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-charcoal-dark p-2 rounded text-white text-sm neon-border whitespace-nowrap">
-                    For Professors
-                  </div>
-                )}
-              </div>
-              
-              <div className="relative">
-                <Link to="/about">
-                  <Button 
-                    size="lg"
-                    className="bg-transparent border-2 border-neon-blue text-white hover:text-neon-blue glow-on-hover rounded-full px-8 py-6"
-                    onMouseEnter={() => setActiveTooltip('institution')}
-                    onMouseLeave={() => setActiveTooltip(null)}
-                  >
-                    Empower your Institution
-                  </Button>
-                </Link>
-                {activeTooltip === 'institution' && (
-                  <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-charcoal-dark p-2 rounded text-white text-sm neon-border whitespace-nowrap">
-                    For Universities
-                  </div>
-                )}
-              </div>
+              </Link>
             </div>
           </div>
         </div>
