@@ -28,15 +28,9 @@ export default function Navbar() {
       isScrolled ? 'navbar-scrolled navbar-curved' : 'navbar-initial bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`flex justify-between h-16 items-center ${
-          isScrolled ? 'justify-center' : 'justify-between'
-        }`}>
+        <div className="flex justify-between h-16 items-center">
           {/* Logo */}
-          <div 
-            className={`flex-shrink-0 flex items-center navbar-logo ${
-              isScrolled ? 'mr-4' : 'mr-0'
-            }`}
-          >
+          <div className="flex-shrink-0 flex items-center navbar-logo">
             <Link 
               to="/" 
               className={`font-bold text-xl md:text-2xl font-poppins transition-all hover:animate-glitch ${
@@ -48,9 +42,7 @@ export default function Navbar() {
           </div>
           
           {/* Desktop navigation */}
-          <div className={`hidden md:flex items-center transition-all duration-500 ${
-            isScrolled ? 'space-x-6 flex-grow justify-center' : 'space-x-8'
-          }`}>
+          <div className="hidden md:flex items-center space-x-8 transition-all duration-500">
             <Link to="/" className="navbar-item px-3 py-2 text-sm font-medium text-white hover:text-neon-blue transition-colors">
               Home
             </Link>
@@ -69,9 +61,7 @@ export default function Navbar() {
           </div>
           
           {/* Action buttons */}
-          <div className={`hidden md:flex items-center navbar-actions ${
-            isScrolled ? 'space-x-2 ml-4' : 'space-x-4'
-          }`}>
+          <div className="hidden md:flex items-center navbar-actions space-x-4">
             {isAuthenticated ? (
               <Link to="/portal">
                 <Button className="bg-transparent border-2 border-neon-blue text-white hover:text-neon-blue glow-on-hover rounded-full px-6">
@@ -81,9 +71,7 @@ export default function Navbar() {
             ) : (
               <>
                 <Button 
-                  className={`text-white hover:text-neon-blue transition-colors ${
-                    isScrolled ? 'px-4 py-1' : 'px-6 py-2'
-                  }`}
+                  className="text-white hover:text-neon-blue transition-colors px-6 py-2"
                   variant="ghost"
                   onClick={() => {
                     console.log('Login clicked');
@@ -93,9 +81,7 @@ export default function Navbar() {
                 </Button>
                 
                 <Button 
-                  className={`bg-transparent border-2 border-neon-blue text-white hover:text-neon-blue glow-on-hover rounded-full ${
-                    isScrolled ? 'px-4 py-1' : 'px-6 py-2'
-                  }`}
+                  className="bg-transparent border-2 border-neon-blue text-white hover:text-neon-blue glow-on-hover rounded-full px-6 py-2"
                   onClick={() => {
                     console.log('Sign Up clicked');
                   }}

@@ -129,13 +129,13 @@
 }
 
 .navbar-item {
-  @apply transition-all duration-500;
+  @apply transition-all duration-300;
 }
 
 .navbar-logo {
-  @apply transition-transform duration-500;
+  @apply transition-all duration-300;
 }
 
 .navbar-actions {
-  @apply transition-transform duration-500;
+  @apply transition-all duration-300;
 }
